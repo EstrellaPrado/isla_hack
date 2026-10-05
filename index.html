@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Isla Hack: El Código del Pensamiento</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ===================== PANTALLA DE INICIO ===================== -->
+<main id="pantalla-inicio" class="pantalla activa" aria-labelledby="titulo-juego">
+  <div class="fondo-decorativo"></div>
+  <div class="tarjeta-inicio">
+    <div class="logo">
+      <h1 id="titulo-juego">ISLA HACK</h1>
+      <h2>El Código del Pensamiento</h2>
+      <p>Reúne las ocho Cartas de Pista y llega al Núcleo del Laboratorio para hackear el sistema de la isla.</p>
+    </div>
+
+    <p class="etiqueta" id="etiqueta-jugadores">Especialistas en ciberseguridad (de 2 a 4 jugadores)</p>
+    <div id="entradas-jugadores" role="group" aria-labelledby="etiqueta-jugadores">
+      <input type="text" class="entrada-jugador" aria-label="Nombre del jugador 1" placeholder="Jugador 1" maxlength="18" autocomplete="off">
+      <input type="text" class="entrada-jugador" aria-label="Nombre del jugador 2" placeholder="Jugador 2" maxlength="18" autocomplete="off">
+      <input type="text" class="entrada-jugador" aria-label="Nombre del jugador 3, opcional" placeholder="Jugador 3 (opcional)" maxlength="18" autocomplete="off">
+      <input type="text" class="entrada-jugador" aria-label="Nombre del jugador 4, opcional" placeholder="Jugador 4 (opcional)" maxlength="18" autocomplete="off">
+    </div>
+
+    <div class="botones-inicio">
+      <button id="btn-nueva" class="btn btn-primario">Nueva partida</button>
+      <button id="btn-continuar" class="btn btn-secundario">Continuar partida guardada</button>
+      <button id="btn-ayuda-inicio" class="btn btn-secundario">Cómo se juega</button>
+    </div>
+    <p id="estado-guardado" class="estado-guardado" role="status" aria-live="polite"></p>
+  </div>
+</main>
+
+<!-- ===================== PANTALLA DE JUEGO ===================== -->
+<section id="pantalla-juego" class="pantalla" aria-label="Mesa de juego">
+  <div class="contenedor-juego">
+
+    <!-- Tablero -->
+    <section class="col-tablero" aria-label="Tablero de Isla Hack">
+      <div class="marco-tablero">
+        <div id="tablero" class="tablero" role="grid" aria-label="Tablero en espiral de 48 casillas"></div>
+      </div>
+      <div class="leyenda">
+        <div id="leyenda-zonas" class="leyenda-zonas"></div>
+        <div class="leyenda-extra">
+          <span><i class="punto-icono rayo" aria-hidden="true"></i> Interferencia</span>
+          <span><i class="punto-icono alerta" aria-hidden="true"></i> Pista falsa</span>
+          <span>Cada subred agrupa 6 casillas</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Panel lateral -->
+    <aside class="col-panel" aria-label="Panel de misión y jugadores">
+      <h2 id="lbl-turno" class="lbl-turno" aria-live="polite">Turno de: —</h2>
+
+      <section class="progreso-mision" aria-label="Progreso del jugador actual">
+        <div class="progreso-titulo">
+          <h3>PROGRESO DE MISIÓN</h3>
+          <span id="progreso-cartas-texto">0 / 8 cartas</span>
+        </div>
+        <div id="progreso-cartas" class="progreso-cartas" role="list" aria-label="Cartas de Pista reunidas"></div>
+        <div class="progreso-ruta">
+          <div class="progreso-ruta-texto">
+            <span>Ruta al Núcleo</span>
+            <strong id="progreso-ruta-texto">Casilla 1 de 48</strong>
+          </div>
+          <div class="barra-progreso" role="progressbar" aria-label="Avance hacia el Núcleo"
+               aria-valuemin="1" aria-valuemax="48" aria-valuenow="1">
+            <span id="barra-progreso-ruta"></span>
+          </div>
+        </div>
+        <p id="estado-mision" class="estado-mision">Reúne una Carta de Pista de cada subred.</p>
+      </section>
+
+      <div class="fila-dado">
+        <div id="dado" class="dado" role="img" aria-label="Dado sin lanzar">
+          <div class="cara-dado sin-lanzar" id="cara-dado"></div>
+        </div>
+        <div class="col-acciones">
+          <button id="btn-accion" class="btn btn-primario btn-grande">Lanzar dado</button>
+          <button id="btn-bitacora" class="btn btn-secundario btn-full">Bitacora</button>
+          <div class="fila-mini">
+            <button id="btn-pistas" class="btn btn-secundario btn-mini">Pistas</button>
+            <button id="btn-ayuda" class="btn btn-secundario btn-mini">Ayuda</button>
+            <button id="btn-salir" class="btn btn-secundario btn-mini">Salir</button>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="titulo-panel">⬢ EQUIPO DE CIBERSEGURIDAD</h3>
+      <div id="panel-jugadores" class="panel-jugadores" role="list" aria-label="Equipo de ciberseguridad"></div>
+      <p id="estado-guardado-juego" class="estado-guardado" role="status" aria-live="polite"></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ===================== MODALES ===================== -->
+<div id="modal-overlay" class="modal-overlay" aria-hidden="true">
+  <div id="modal-contenido" class="modal-contenido" role="dialog" aria-modal="true" aria-label="Ventana del juego" tabindex="-1"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
